@@ -50,6 +50,6 @@ public class Csanky{
 	}
 
 	public static double det(Matrix a) {
-		return frame_iterativ(a);
+		return frame_parallel(a);
 	}
 }

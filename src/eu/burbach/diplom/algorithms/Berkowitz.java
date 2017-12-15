@@ -87,6 +87,7 @@ public class Berkowitz {
 		return res;
 	}
 	
+	/* die Korrektheit dieser Methode ist verifiziert */
 	public double samuelson(Matrix a) {
 		if (a.columns()!=a.rows())
 			return 0;

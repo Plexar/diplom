@@ -4,6 +4,7 @@ import eu.burbach.diplom.common.Matrix;
 
 public class Gauss {
 	
+	/* die Korrektheit diese Methode ist verifiziert */
 	public static double det(Matrix a) {
 		if (a.columns()!=a.rows())
 			return 0;
