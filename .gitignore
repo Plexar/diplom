@@ -19,3 +19,5 @@ bin/eu/burbach/diplom/common/package-info.class
 build.fxbuild
 .settings/org.eclipse.jdt.core.prefs
 .classpath
+bin/eu/burbach/diplom/algorithms/BGH.class
+bin/eu/burbach/diplom/algorithms/Pan.class
