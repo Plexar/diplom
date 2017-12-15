@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="394.0" prefWidth="547.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.burbach.diplom.application.MainController">
+   <children>
+      <BorderPane fx:id="borderPane" prefHeight="384.0" prefWidth="565.0">
+         <right>
+            <VBox prefHeight="319.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#buttonGauss" text="Gauss" />
+                  <Button mnemonicParsing="false" onAction="#buttonLeibniz" text="Leibniz" />
+                  <Button mnemonicParsing="false" onAction="#buttonCsanky" text="Csanky" />
+                  <Button mnemonicParsing="false" onAction="#buttonBerkowitz" prefHeight="27.0" prefWidth="85.0" text="Berkowitz" />
+               </children>
+            </VBox>
+         </right>
+         <bottom>
+            <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label contentDisplay="RIGHT" text="Determinante:">
+                     <graphic>
+                        <TextField fx:id="det" prefHeight="27.0" prefWidth="129.0" />
+                     </graphic>
+                  </Label>
+                  <Label contentDisplay="RIGHT" text="Anzahl Zeilen und Spalten:">
+                     <graphic>
+                        <TextField fx:id="n" onAction="#textFieldEditedN" prefHeight="27.0" prefWidth="47.0" />
+                     </graphic>
+                  </Label>
+                  <Label />
+                  <Button mnemonicParsing="false" onAction="#textFieldEditedN" text="Clear" />
+                  <Button mnemonicParsing="false" onAction="#buttonExit" text="Exit">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
