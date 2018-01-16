@@ -1,36 +1,24 @@
 package eu.burbach.diplom.application;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-import javax.security.auth.login.CredentialExpiredException;
-
+import javafx.beans.property.SimpleStringProperty;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import eu.burbach.diplom.algorithms.Berkowitz;
 import eu.burbach.diplom.algorithms.Csanky;
 import eu.burbach.diplom.algorithms.Gauss;
 import eu.burbach.diplom.algorithms.Leibniz;
 import eu.burbach.diplom.common.Matrix;
-import javafx.beans.InvalidationListener;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.util.Callback;
 
 public class MainController {
 	@FXML TextField n;
-	@FXML TableView<MyTableRow> table;
+	@FXML TableView<Row> table;
 	@FXML TextField det;
 	@FXML BorderPane borderPane;
 	Random random= new Random(3094);
@@ -53,8 +41,8 @@ public class MainController {
 	}
 	
 	private Matrix table2Matrix() {
-		int nint=0;
-		try {nint= Integer.parseInt(n.getText());} catch (NumberFormatException e) {}
+		//int nint=0;
+		//try {nint= Integer.parseInt(n.getText());} catch (NumberFormatException e) {}
 		
 		Matrix res= mat.copy();
 //		for (int r=0; r<nint; r++) {
@@ -80,10 +68,12 @@ public class MainController {
 		int nint=0;
 		try {nint= Integer.parseInt(n.getText());} catch (NumberFormatException e) {}
 		
+		//fülle die Matrix mit Zufallswerten:
 		mat=new Matrix(nint,nint);
 		for (int r=0; r<nint; r++)
 			for (int c=0; c<nint; c++)
 				mat.set(r, c, Math.round(random.nextDouble()*10+1));
+		/*
 		for (int r=0; r<nint; r++) {
 			for (int c=0; c<nint; c++) {
 				System.out.print(mat.get(r, c)); 
@@ -91,43 +81,30 @@ public class MainController {
 			}
 			System.out.println();
 		}
-
-		TableView<MyTableRow> t= new TableView<MyTableRow>();
-		for (int c=0; c<nint; c++) {
-		    Callback<TableColumn, TableCell> editableFactory = new Callback<TableColumn, TableCell>() {
-		        @Override
-		        public TableCell call(TableColumn p) {
-		            return new EditingCell();
-		        }
-		    };
-			TableColumn<MyTableRow,String> col= new TableColumn<MyTableRow,String>();
-			final int fc= c;
-			col.setCellValueFactory(new Callback<CellDataFeatures<MyTableRow,String>,ObservableValue<String>>(){		
-				@Override
-				public ObservableValue<String> call(CellDataFeatures<MyTableRow, String> p) {
-					if (p.getValue()!=null)
-						return p.getValue().getValue(fc);
-					else
-						return new SimpleStringProperty();
+		*/
+		
+		//zeige die Matrix an:
+		table.getColumns().clear();
+	     for (int m = 0; m < nint; m++)
+	     {
+	            TableColumn<Row, String> column = new TableColumn<>(Integer.toString(m));
+	            column.setCellValueFactory(param -> {
+//	                int index = Integer.parseInt(param.getTableColumn().getText());
+	                int index = param.getTableView().getColumns().indexOf(param.getTableColumn());
+	                List<Cell> cells = param.getValue().getCells();
+	                return new SimpleStringProperty(cells.size() > index ? cells.get(index).toString() : null);
+	            });
+	            table.getColumns().add(column);
+	     }	     
+	     List<Row> rows= new ArrayList<>();
+	     for (int r=0; r<nint; r++) {
+				Row e= new Row();				
+				for (int c=0; c<nint; c++) {
+					e.getCells().add(new Cell(Double.toString(mat.get(r, c)))); 
 				}
-			});
-			col.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<MyTableRow,String>>() {				
-				@Override
-				public void handle(CellEditEvent<MyTableRow, String> t) {
-					t.getRowValue().setValue(new SimpleStringProperty(t.getNewValue()), fc);
-				}
-			});
-			col.setSortable(false);
-			col.setEditable(true);
-			t.getColumns().add(col);
-			
-			final ObservableList<MyTableRow> list= FXCollections.observableArrayList();
-			for (int r=0; r<nint; r++)
-				list.add(new MyTableRow(nint));
-			t.setItems(list);
-		}
-		table= t;
-		t.setEditable(true);
-		borderPane.setCenter(t);
+				rows.add(e);
+	     }
+	     table.getItems().clear();
+	     table.getItems().addAll(rows);
 	}
 }

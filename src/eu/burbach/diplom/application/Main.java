@@ -15,7 +15,7 @@ public class Main extends Application {
 			//BorderPane root = new BorderPane();
 			Parent root= FXMLLoader.load(getClass().getResource("/eu/burbach/diplom/application/Main.fxml"));
 			Scene scene = new Scene(root,600,400);
-			primaryStage.setTitle("Algorithmen zur parallelen Determinantenberechnung in Java 01.12.2017");
+			primaryStage.setTitle("Algorithmen zur parallelen Determinantenberechnung in Java 16.01.2018");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {

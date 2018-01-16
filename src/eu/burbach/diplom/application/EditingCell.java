@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class EditingCell extends TableCell<MyTableRow, String> {
+public class EditingCell extends TableCell<Row, String> {
 private TextField textField;
 
 public EditingCell() {
