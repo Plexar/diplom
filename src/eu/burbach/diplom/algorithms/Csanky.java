@@ -2,7 +2,7 @@ package eu.burbach.diplom.algorithms;
 
 import eu.burbach.diplom.common.Matrix;
 
-public class Csanky extends Det {
+public class Csanky implements Det {
 
 	/* Diese Methode ist für n>3 offensichtlich noch nicht korrekt. */
 	public static double frame_parallel(Matrix a) {

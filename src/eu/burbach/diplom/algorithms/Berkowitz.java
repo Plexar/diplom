@@ -6,7 +6,7 @@ import java.util.Queue;
 
 import eu.burbach.diplom.common.Matrix;
 
-public class Berkowitz extends Det {
+public class Berkowitz implements Det {
 	
 	private HashMap<Integer,Matrix> s= new HashMap<>();
 	private HashMap<Integer,Matrix> r= new HashMap<>();

@@ -2,6 +2,6 @@ package eu.burbach.diplom.algorithms;
 
 import eu.burbach.diplom.common.Matrix;
 
-public abstract class Det {
-	public abstract double det(Matrix mat);
+public interface Det {
+	public double det(Matrix mat);
 }

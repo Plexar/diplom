@@ -2,7 +2,7 @@ package eu.burbach.diplom.algorithms;
 
 import eu.burbach.diplom.common.Matrix;
 
-public class Gauss extends Det {
+public class Gauss implements Det {
 	
 	/* die Korrektheit diese Methode ist verifiziert */
 	public double det(Matrix a) {
