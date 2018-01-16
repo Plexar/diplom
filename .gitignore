@@ -21,3 +21,5 @@ build.fxbuild
 .classpath
 bin/eu/burbach/diplom/algorithms/BGH.class
 bin/eu/burbach/diplom/algorithms/Pan.class
+Row.class
+Cell.class
