@@ -1,13 +1,8 @@
 package eu.burbach.diplom.algorithms;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
-
 import eu.burbach.diplom.common.Matrix;
 
-public class Csanky{
+public class Csanky extends Det {
 
 	/* Diese Methode ist für n>3 offensichtlich noch nicht korrekt. */
 	public static double frame_parallel(Matrix a) {
@@ -49,7 +44,7 @@ public class Csanky{
 		return Math.pow(-1, n)*c[0];
 	}
 
-	public static double det(Matrix a) {
+	public double det(Matrix a) {
 		return frame_parallel(a);
 	}
 }

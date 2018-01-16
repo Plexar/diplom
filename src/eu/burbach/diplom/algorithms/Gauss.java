@@ -2,10 +2,10 @@ package eu.burbach.diplom.algorithms;
 
 import eu.burbach.diplom.common.Matrix;
 
-public class Gauss {
+public class Gauss extends Det {
 	
 	/* die Korrektheit diese Methode ist verifiziert */
-	public static double det(Matrix a) {
+	public double det(Matrix a) {
 		if (a.columns()!=a.rows())
 			return 0;
 		if (a.columns()==1)

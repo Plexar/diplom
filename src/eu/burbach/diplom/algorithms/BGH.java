@@ -2,8 +2,8 @@ package eu.burbach.diplom.algorithms;
 
 import eu.burbach.diplom.common.Matrix;
 
-public class BGH {
-	public static double det(Matrix a) {
+public class BGH extends Det {
+	public double det(Matrix a) {
 		return 0;
 	}
 }

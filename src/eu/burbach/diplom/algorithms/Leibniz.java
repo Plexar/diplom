@@ -2,10 +2,10 @@ package eu.burbach.diplom.algorithms;
 
 import eu.burbach.diplom.common.Matrix;
 
-public class Leibniz {
+public class Leibniz extends Det {
 
 	/* diese Methode berechnet für n>3 keine Determinante */
-	public static double det(Matrix a) {
+	public double det(Matrix a) {
 		if (a.rows()!=a.columns())
 			return 0;
 		if (a.rows()==1)

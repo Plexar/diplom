@@ -6,7 +6,7 @@ import java.util.Queue;
 
 import eu.burbach.diplom.common.Matrix;
 
-public class Berkowitz {
+public class Berkowitz extends Det {
 	
 	private HashMap<Integer,Matrix> s= new HashMap<>();
 	private HashMap<Integer,Matrix> r= new HashMap<>();
@@ -110,7 +110,7 @@ public class Berkowitz {
 		return p.get(p.rows()-1, 0);
 	}
 	
-	public static double det(Matrix a) {
-		return new Berkowitz().samuelson(a);
+	public double det(Matrix a) {
+		return samuelson(a);
 	}
 }
