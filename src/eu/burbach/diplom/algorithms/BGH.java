@@ -1,5 +1,9 @@
 package eu.burbach.diplom.algorithms;
 
-public class BGH {
+import eu.burbach.diplom.common.Matrix;
 
+public class BGH {
+	public static double det(Matrix a) {
+		return 0;
+	}
 }

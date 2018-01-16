@@ -10,10 +10,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import eu.burbach.diplom.algorithms.BGH;
 import eu.burbach.diplom.algorithms.Berkowitz;
 import eu.burbach.diplom.algorithms.Csanky;
 import eu.burbach.diplom.algorithms.Gauss;
 import eu.burbach.diplom.algorithms.Leibniz;
+import eu.burbach.diplom.algorithms.Pan;
 import eu.burbach.diplom.common.Matrix;
 
 public class MainController {
@@ -38,6 +40,14 @@ public class MainController {
 	
 	public void buttonBerkowitz() {
 		det.setText(new Double(Berkowitz.det(table2Matrix())).toString());
+	}
+	
+	public void buttonBGH() {
+		det.setText(new Double(BGH.det(table2Matrix())).toString());
+	}
+	
+	public void buttonPan() {
+		det.setText(new Double(Pan.det(table2Matrix())).toString());
 	}
 	
 	private Matrix table2Matrix() {

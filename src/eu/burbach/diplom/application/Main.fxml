@@ -16,6 +16,8 @@
                   <Button mnemonicParsing="false" onAction="#buttonLeibniz" text="Leibniz" />
                   <Button mnemonicParsing="false" onAction="#buttonCsanky" text="Csanky" />
                   <Button mnemonicParsing="false" onAction="#buttonBerkowitz" prefHeight="27.0" prefWidth="85.0" text="Berkowitz" />
+                  <Button mnemonicParsing="false" onAction="#buttonBGH" text="BGH" />
+                  <Button mnemonicParsing="false" onAction="#buttonPan" text="Pan" />
                </children>
             </VBox>
          </right>
