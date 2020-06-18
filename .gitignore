@@ -18,6 +18,8 @@ bin/eu/burbach/diplom/common/package-info.class
 .project
 build.fxbuild
 .settings/org.eclipse.jdt.core.prefs
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.wst.common.project.facet.core.xml
 .classpath
 bin/eu/burbach/diplom/algorithms/BGH.class
 bin/eu/burbach/diplom/algorithms/Pan.class
