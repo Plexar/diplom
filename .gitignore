@@ -1,5 +1,6 @@
 .project
 .settings
 build.fxbuild
+build
 .classpath
 bin
