@@ -35,7 +35,7 @@ public class Csanky implements Det {
 		Matrix[] b= new Matrix[n+1];
 		Double[] c= new Double[n+1];
 		b[0]= new Matrix(n,n);
-		c[n]= new Double(1);
+		c[n]= Double.valueOf(1);
 		
 		for (int k=1; k<=n;k++) {
 			b[k]= a.mult(b[k-1]).add(Matrix.e(n).mult(c[n-k+1]));

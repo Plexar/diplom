@@ -27,27 +27,27 @@ public class MainController {
 	Matrix mat;
 
 	public void buttonGauss() {
-		det.setText(new Double(new Gauss().det(table2Matrix())).toString());
+		det.setText(Double.valueOf(new Gauss().det(table2Matrix())).toString());
 	}
 	
 	public void buttonLeibniz() {
-		det.setText(new Double(new Leibniz().det(table2Matrix())).toString());
+		det.setText(Double.valueOf(new Leibniz().det(table2Matrix())).toString());
 	}
 	
 	public void buttonCsanky() {
-		det.setText(new Double(new Csanky().det(table2Matrix())).toString());
+		det.setText(Double.valueOf(new Csanky().det(table2Matrix())).toString());
 	}
 	
 	public void buttonBerkowitz() {
-		det.setText(new Double(new Berkowitz().det(table2Matrix())).toString());
+		det.setText(Double.valueOf(new Berkowitz().det(table2Matrix())).toString());
 	}
 	
 	public void buttonBGH() {
-		det.setText(new Double(new BGH().det(table2Matrix())).toString());
+		det.setText(Double.valueOf(new BGH().det(table2Matrix())).toString());
 	}
 	
 	public void buttonPan() {
-		det.setText(new Double(new Pan().det(table2Matrix())).toString());
+		det.setText(Double.valueOf(new Pan().det(table2Matrix())).toString());
 	}
 	
 	private Matrix table2Matrix() {
