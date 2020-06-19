@@ -52,9 +52,9 @@ public class Berkowitz implements Det {
 		s= new HashMap<>();
 		m= new HashMap<>();
 		for (int i=1; i<n; i++) {
-			r.put(new Integer(i), r_i(a,i));
-			s.put(new Integer(i), s_i(a,i));
-			m.put(new Integer(i), m_i(a,i));
+			r.put(Integer.valueOf(i), r_i(a,i));
+			s.put(Integer.valueOf(i), s_i(a,i));
+			m.put(Integer.valueOf(i), m_i(a,i));
 		}
 	}
 	
