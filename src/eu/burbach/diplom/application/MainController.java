@@ -1,22 +1,25 @@
 package eu.burbach.diplom.application;
 
+import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import eu.burbach.diplom.algorithms.BGH;
 import eu.burbach.diplom.algorithms.Berkowitz;
 import eu.burbach.diplom.algorithms.Csanky;
 import eu.burbach.diplom.algorithms.Gauss;
 import eu.burbach.diplom.algorithms.Leibniz;
 import eu.burbach.diplom.algorithms.Pan;
+import eu.burbach.diplom.common.BigComputable;
 import eu.burbach.diplom.common.Matrix;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 
 public class MainController {
 	@FXML TextField n;
@@ -24,37 +27,67 @@ public class MainController {
 	@FXML TextField det;
 	@FXML BorderPane borderPane;
 	Random random= new Random(3094);
-	Matrix mat;
+	Matrix<BigComputable,BigDecimal> mat;
 
 	public void buttonGauss() {
-		det.setText(Double.valueOf(new Gauss().det(table2Matrix())).toString());
+		try {
+			det.setText(Double.valueOf(new Gauss<BigComputable,BigDecimal>().det(table2Matrix()).getDouble()).toString());
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void buttonLeibniz() {
-		det.setText(Double.valueOf(new Leibniz().det(table2Matrix())).toString());
+		try {
+			det.setText(Double.valueOf(new Leibniz<BigComputable,BigDecimal>().det(table2Matrix()).getDouble()).toString());
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void buttonCsanky() {
-		det.setText(Double.valueOf(new Csanky().det(table2Matrix())).toString());
+		try {
+			det.setText(Double.valueOf(new Csanky<BigComputable,BigDecimal>().det(table2Matrix()).getDouble()).toString());
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void buttonBerkowitz() {
-		det.setText(Double.valueOf(new Berkowitz().det(table2Matrix())).toString());
+		try {
+			det.setText(new Berkowitz<BigComputable,BigDecimal>().det(table2Matrix()).get().toString());
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void buttonBGH() {
-		det.setText(Double.valueOf(new BGH().det(table2Matrix())).toString());
+		try {
+			det.setText(Double.valueOf(new BGH<BigComputable,BigDecimal>().det(table2Matrix()).getDouble()).toString());
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException e) {
+			// TODO Auto-generated catch block
+		}
 	}
 	
 	public void buttonPan() {
-		det.setText(Double.valueOf(new Pan().det(table2Matrix())).toString());
+		try {
+			det.setText(Double.valueOf(new Pan<BigComputable,BigDecimal>().det(table2Matrix()).getDouble()).toString());
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	private Matrix table2Matrix() {
+	private Matrix<BigComputable,BigDecimal> table2Matrix() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		//int nint=0;
 		//try {nint= Integer.parseInt(n.getText());} catch (NumberFormatException e) {}
 		
-		Matrix res= mat.copy();
+		Matrix<BigComputable,BigDecimal> res= mat.copy();
 //		for (int r=0; r<nint; r++) {
 //			for(int c=0; c<nint; c++) {
 //				try {
@@ -74,15 +107,15 @@ public class MainController {
 		System.exit(0);
 	}
 	
-	public void textFieldEditedN() {
+	public void textFieldEditedN() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		int nint=0;
 		try {nint= Integer.parseInt(n.getText());} catch (NumberFormatException e) {}
 		
 		//fülle die Matrix mit Zufallswerten:
-		mat=new Matrix(nint,nint);
+		mat=new Matrix<BigComputable,BigDecimal>(BigComputable.class,nint,nint);
 		for (int r=0; r<nint; r++)
 			for (int c=0; c<nint; c++)
-				mat.set(r, c, Math.round(random.nextDouble()*10+1));
+				mat.set(r, c, new BigComputable(new BigDecimal(Math.round(random.nextDouble()*10+1))));
 		/*
 		for (int r=0; r<nint; r++) {
 			for (int c=0; c<nint; c++) {
@@ -110,7 +143,7 @@ public class MainController {
 	     for (int r=0; r<nint; r++) {
 				Row e= new Row();				
 				for (int c=0; c<nint; c++) {
-					e.getCells().add(new Cell(Double.toString(mat.get(r, c)))); 
+					e.getCells().add(new Cell(mat.get(r, c).get().toString())); 
 				}
 				rows.add(e);
 	     }
