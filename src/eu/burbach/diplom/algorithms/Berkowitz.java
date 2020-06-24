@@ -103,7 +103,7 @@ public class Berkowitz<T extends Computable<S>,S> implements Det<T,S> {
 		if (a.columns()==1)
 			return a.get(0, 0);
 		if (a.columns()==2)
-			return (T) a.get(0, 0).mult(a.get(1, 1)).sub(a.get(1, 0)).mult(a.get(0, 1));
+			return (T) a.get(0, 0).mult(a.get(1, 1)).sub(a.get(1, 0).mult(a.get(0, 1)));
 			
 		fill_r_s_m(a);
 		int n= a.columns();
